@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль - Управление данными</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="main-content" style="margin-left: 0; width: 100%;">
+            <header class="main-header">
+                <a href="index.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> На главную</a>
+                <div class="header-title"><h1>Профиль - Управление данными</h1></div>
+            </header>
+            <main>
+                <div class="card">
+                    <h2>Настройки главной страницы</h2>
+                    <p class="sub-header">Здесь вы можете выбрать, какой семестр будет отображаться в разделе "Пропуски" на главной странице.</p>
+                    <form id="main-page-settings-form" class="management-form">
+                        <div class="form-grid"><label>Семестр для отображения:<select id="main-page-semester-select" class="semester-select" required></select></label></div>
+                        <button type="submit" class="btn btn-primary btn-large">Установить семестр для главной страницы</button>
+                    </form>
+                </div>
+                <div class="card" id="applications-manager">
+                    <h2>Управление: Заявления по ОРВИ</h2>
+                    <form id="application-form" class="management-form">
+                        <!-- FIXED: Added name="id" -->
+                        <input type="hidden" id="application-id" name="id">
+                        <div class="form-grid">
+                            <label>Семестр: <select name="semester" id="application-semester" class="semester-select" required></select></label>
+                            <label>Статус: <select name="status" id="application-status" required><option value="Одобрена">Одобрена</option><option value="Отклонена">Отклонена</option></select></label>
+                            <label>Дата подачи: <input name="submissionDate" type="date" id="application-submission-date" required></label>
+                            <label>Дата начала действия: <input name="actionDateStart" type="date" id="application-start-date" required></label>
+                            <label>Дата окончания действия: <input name="actionDateEnd" type="date" id="application-end-date" required></label>
+                            <label>Причина отказа (если есть): <input name="rejectionReason" type="text" id="application-rejection-reason"></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Сохранить заявление</button>
+                        <button type="button" id="application-clear-btn" class="btn btn-secondary">Новое заявление</button>
+                    </form>
+                    <div id="application-list" class="management-list"></div>
+                </div>
+                <div class="card">
+                    <h2>Управление: Пропуски по неуважительной причине</h2>
+                    <form id="absences-form" class="management-form">
+                        <div class="form-grid"><label>Семестр для редактирования: <select id="absences-semester-edit" class="semester-select" required></select></label></div>
+                        <div id="absences-months-inputs" class="form-grid">
+                            <label id="absences-month-1-label">... <input type="number" id="absences-month-1" min="0" value="0"></label>
+                            <label id="absences-month-2-label">... <input type="number" id="absences-month-2" min="0" value="0"></label>
+                            <label id="absences-month-3-label">... <input type="number" id="absences-month-3" min="0" value="0"></label>
+                            <label id="absences-month-4-label">... <input type="number" id="absences-month-4" min="0" value="0"></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Сохранить пропуски</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <h2>Управление: Информация о справках</h2>
+                    <form id="reference-form" class="management-form">
+                        <!-- FIXED: Added name="id" -->
+                        <input type="hidden" id="reference-id" name="id">
+                        <div class="form-grid">
+                            <label>Семестр: <select name="semester" id="reference-semester" class="semester-select" required></select></label>
+                            <label>Тип документа: <input name="type" type="text" id="reference-type" required placeholder="Напр., Мед. справка"></label>
+                            <label>Дата начала: <input name="startDate" type="date" id="reference-start-date" required></label>
+                            <label>Дата окончания: <input name="endDate" type="date" id="reference-end-date" required></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Сохранить справку</button>
+                        <button type="button" id="reference-clear-btn" class="btn btn-secondary">Новая справка</button>
+                    </form>
+                    <div id="reference-list" class="management-list"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
